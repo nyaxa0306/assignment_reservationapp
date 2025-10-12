@@ -4,11 +4,11 @@
   </div>
   <div class="nav-link">
     <% if user_signed_in? %>
-      <%= link_to "ログアウト", destroy_user_session_path, data: { turbo_method: :delete }, class: "login-btn" %>
+      <%= link_to "ログアウト", destroy_user_session_path, data: { turbo_method: :delete }, class: "nav-login-btn" %>
     <% else %>
-      <%= link_to "ログイン", new_user_session_path, class: "login-btn" %>
+      <%= link_to "ログイン", new_user_session_path, class: "nav-login-btn" %>
       <%= link_to :new_user_registration do %>
-        <button class="edit-btn">新規登録</button>
+        <button class="nav-registration-btn">新規登録</button>
       <% end %>
     <% end %>
   </div>
