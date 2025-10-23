@@ -34,6 +34,7 @@
   border: solid 1px #0067c0;
   border-radius: 10px;
 }
+<<<<<<< HEAD
 /*フラッシュメッセージ*/
 .flashbox {
   width: 300px;
@@ -64,6 +65,11 @@
 .container {
   width: 45% !important;
   margin-top: 50px;
+=======
+
+.container {
+  width: 45% !important;
+>>>>>>> aa1409a136839aaf28996a5133dbb5d26f4d0549
   padding: 20px;
   display: grid;
   justify-content: center;
@@ -109,6 +115,7 @@
   background-color: #ffff;
   border: solid 1px #ccc;
   border-radius: 10px;
+<<<<<<< HEAD
 }
 
 .user-registration-container {
@@ -232,4 +239,6 @@
   border: solid 1px #543618;
   border-radius: 5px;
   cursor: pointer;
+=======
+>>>>>>> aa1409a136839aaf28996a5133dbb5d26f4d0549
 }
