@@ -1,0 +1,23 @@
+<div class="user-registration-container">
+  <h2>設定</h2>
+  <div class="account-container">
+    <ul class="account-section">
+      <li class="account-link-active"><%= link_to "アカウント", account_path, style: "text-decoration: none;" %></li>
+      <li class="account-link"><%= link_to "プロフィール", user_path(current_user), style: "text-decoration: none;" %></li>
+    </ul>
+    <div class="account-content">
+      <div class="account-header">
+        <h2>アカウント</h2>
+        <%= link_to "編集", edit_user_registration_path, class: "account-edit-btn" %>
+      </div>
+      <div class="account-info">
+        <strong class="account-info-item">メールアドレス</strong>
+        <span><%= current_user.email %></span>
+      </div>
+      <div class="account-info">
+        <strong class="account-info-item">パスワード</strong>
+        <span>********</span>
+      </div>
+    </div>
+  </div>
+</div>

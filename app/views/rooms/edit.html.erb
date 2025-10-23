@@ -1,0 +1,41 @@
+<div class="container">
+  <h2 class="page-title">施設情報の編集</h2>
+
+  <%= form_with model: @room do |f| %>
+    <div class="room-field">
+      <strong class="room-registration-item"><%= f.label :name, "施設名", class: "required-field" %></strong><br />
+      <span class="room-registration-form"><%= f.text_field :name, autofocus: true, class: "input-field" %></span>
+    </div>
+
+    <div class="room-field">
+      <strong class="room-registration-item"><%= f.label :detail, "施設詳細", class: "required-field" %></strong><br />
+      <span class="room-registration-form"><%= f.text_area :detail, autofocus: true, class: "input-field" %></span>
+    </div>
+
+    <div class="room-field">
+      <strong class="room-registration-item"><%= f.label :price, "料金", class: "required-field" %></strong>
+      <span class="room-registration-form"><%= f.text_field :price, class: "input-field" %></span>
+    </div>
+
+    <div class="room-field">
+      <strong class="room-registration-item"><%= f.label :address, "住所", class: "required-field" %></strong>
+      <span class="room-registration-form"><%= f.text_field :address, autofocus: true, class: "input-field" %></span>
+    </div>
+
+    <div class="room-field">
+      <strong class="room-registration-item"><%= f.label :image, "施設画像" %></strong>
+      <label class="image-upload-btn">
+        <span>画像アップロード</span>
+        <%= f.file_field :image, style: "display: none;" %>
+      </label>
+    </div>
+
+    <div class="actions">
+      <%= f.submit "保存", class: "actions-btn" %>
+    </div>
+
+    <%= link_to :back do %>
+      <button class="another-link">戻る</button>
+    <% end %>
+  <% end %>
+</div>

@@ -23,8 +23,13 @@
       <%= render 'shared/navbar' %>
     </header>
     
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
+    <div class="flashbox">
+      <% if flash[:notice] %>
+        <p class="notice"><%= flash[:notice] %></p>
+      <% elsif flash[:alert] %>
+        <p class="alert"><%= flash[:alert] %></p>
+      <% end %>
+    </div>
 
     <%= yield %>
   </body>

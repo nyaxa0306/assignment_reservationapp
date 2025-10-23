@@ -1,0 +1,14 @@
+<% @rooms.each do |room| %>
+  <div class="room-card">
+    <div class="room-image">
+      <%= image_tag image_url(room), alt: room.name %>
+    </div>
+    <div class="room-info">
+      <h3 class="room-name"><%= room.name %></h3>
+      <p class="room-detail"><%= truncate(room.detail, length: 100) %></p>
+      <p class="room-price">料金: ¥<%= room.price %> / 時間</p>
+      <p class="room-address">住所: <%= room.address %></p>
+      <%= link_to "詳細を見る", room_path(room), class: "room-detail-link" %>
+    </div>
+  </div>
+<% end %>

@@ -1,0 +1,44 @@
+<div class="user-registration-container">
+  <h2>設定</h2>
+  <div class="account-container">
+    <ul class="account-section">
+      <li class="account-link"><%= link_to "アカウント", account_path, style: "text-decoration: none;" %></li>
+      <li class="account-link-active"><%= link_to "プロフィール", user_path(current_user), style: "text-decoration: none;" %></li>
+    </ul>
+    <div class="account-content">
+      <div class="account-header">
+        <h2>プロフィール</h2>
+      </div>
+      <%= form_with model: @user, url: registration_path(@user), html: { method: :put } do |f| %>
+      <%= render "devise/shared/error_messages", resource: @user %>
+
+    <div class="field">
+      <div class="account-info">
+        <strong class="account-info-item-edit"><%= f.label :avatar, "アイコン画像" %></strong>
+        <span><%= image_tag avatar_url(current_user), class: "account-avatar" %></span>
+        <label class="image-upload-btn">
+          <span>画像アップロード</span>
+          <%= f.file_field :avatar, style: "display: none;" %>
+        </label>
+      </div>
+      <div class="account-info">
+        <strong class="account-info-item-edit"><%= f.label :name, "ユーザー名" %></strong>
+        <span><%= f.text_field :name, autofocus: true, style: "width: 50%;" %></span>
+      </div>
+      <div class="account-info">
+        <strong class="account-info-item-edit"><%= f.label :introduction, "自己紹介" %></strong>
+        <span><%= f.text_area :introduction, autofocus: true, style: "width: 50%;" %></span>
+      </div>
+
+      <div class="actions">
+        <%= f.submit "保存", class: "actions-btn" %>
+      </div>
+      <% end %>
+      
+      <%= link_to :back do %>
+      <button class="another-link">戻る</button>
+      <% end %>
+      </div>
+    </div>
+  </div>
+</div>
