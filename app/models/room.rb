@@ -6,6 +6,14 @@ class Room < ApplicationRecord
 
   validates :name, presence: true
   validates :detail, presence: true
-  validates :price, presence: true
+  validates :price, numericality: true, presence: true
+  validate :price_limitation
   validates :address, presence: true
+
+  def price_limitation
+    return false if price.blank?
+    if price <= 0
+      errors.add(:price, "は１円以上にしてください")
+    end
+  end
 end

@@ -1,0 +1,38 @@
+<div class="dropdown-container">
+  <h2>登録施設一覧</h2>
+  <table class="myroom-table">
+    <thead>
+      <tr>
+        <th class="myroom-image">画像</th>
+        <th class="myroom-name">施設名</th>
+        <th class="myroom-detail">紹介文</th>
+        <th class="myroom-price">金額</th>
+        <th class="myroom-created_at">作成日</th>
+        <th class="myroom-dropdown"></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% current_user.rooms.each do |room| %>
+        <tr>
+          <td><%= image_tag image_url(room), alt: room.name, class: "myroom-image" %></td>
+          <td class="myroom-name"><%= link_to room.name, room_path(room), style: "text-decoration: none;" %></td>
+          <td class="myroom-detail"><%= room.detail %></td>
+          <td class="myroom-price">￥<%= room.price %>～</td>
+          <td class="myroom-created_at"><%= l room.created_at %></td>
+          <td class="myroom-dropdown">
+            <div class="dropdown">
+              <div class="d-flex align-items-center justify-content-center show" id="dropdown-button" data-bs-toggle="dropdown" aria-expanded="true">
+                <img src="/assets/ケバブ.png" alt="ケバブアイコン" style="width: 10px;">
+              </div>
+              <ul class="dropdown-menu">
+                <li><%= link_to "編集", edit_room_path(room), class: "dropdown-item" %></li>
+                <li><%= link_to "施設を削除", room, data: { turbo_method: :delete, turbo_confirm: "施設を削除しますか？" }, class: "dropdown-item" %></li>
+              </ul>
+            </div>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

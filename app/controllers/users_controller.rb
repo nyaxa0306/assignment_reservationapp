@@ -2,6 +2,7 @@ class UsersController < ApplicationController
   before_action :authenticate_user!
 
   def account
+    @user = current_user
   end
   
   def show
@@ -13,7 +14,7 @@ class UsersController < ApplicationController
   end
 
   def update
-    @user = current_user
+    @user = current_user_params
     if @user.update(current_user_params)
       flash[:notice] = "プロフィールを更新しました"
     else

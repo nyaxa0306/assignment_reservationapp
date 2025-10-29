@@ -1,0 +1,41 @@
+<div class="dropdown-container">
+  <h2>予約済み一覧</h2>
+  <table class="reservation-table">
+    <thead>
+      <tr>
+        <th class="reservation-image">画像</th>
+        <th class="reservation-name">施設名</th>
+        <th class="reservation-detail">紹介文</th>
+        <th class="reservation-total">合計料金</th>
+        <th class="reservation-start_date">チェックイン</th>
+        <th class="reservation-end_date">チェックアウト</th>
+        <th class="reservation-created_at">予約確定日時</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% current_user.reservations.each do |reservation| %>
+        <tr>
+          <td class="reservation-image">画像</td>
+          <td class="reservation-name"><%= link_to reservation.room.name, room_path(reservation.room), style: "text-decoration: none;" %></td>
+          <td class="reservation-detail"><%= reservation.room.detail %></td>
+          <td class="reservation-total">￥<%= reservation.total %></td>
+          <td class="reservation-start_date"><%= l reservation.start_date %></td>
+          <td class="reservation-end_date"><%= l reservation.end_date %></td>
+          <td class="reservation-created_at"><%= reservation.created_at.to_fs(:datetime_jp) %></td>
+          <td class="reservation-dropdown">
+            <div class="dropdown">
+              <div class="d-flex align-items-center justify-content-center show" id="dropdown-button" data-bs-toggle="dropdown" aria-expanded="true">
+                <img src="/assets/ケバブ.png" alt="ケバブアイコン" style="width: 10px;">
+              </div>
+              <ul class="dropdown-menu">
+                <li><%= link_to "編集", "#", class: "dropdown-item" %></li>
+                <li><%= link_to "予約を削除", "#", data: { turbo_method: :delete, turbo_confirm: "予約を削除しますか？" }, class: "dropdown-item" %></li>
+              </ul>
+            </div>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

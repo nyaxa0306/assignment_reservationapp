@@ -5,11 +5,22 @@ Rails.application.routes.draw do
   get "/account", to: "users#account"
   get "/profile", to: "users#show", as: "user"
   get "/profile/edit", to: "users#edit", as: "edit_user"
+  get "/reservations", to: "reservations#index"
+  get "/reservations/confirm", to: "reservations#confirm"
+  get "myroom", to: "rooms#myroom"
 
   post "/profile/update", to: "users#update"
 
-  resources :rooms
-  resources :reservations
+  resources :rooms do
+    collection do
+      get "myroom"
+    end
+    resources :reservations do
+      collection do
+        post "confirm"
+      end
+    end
+  end
 
   devise_for :users,
              path: "",

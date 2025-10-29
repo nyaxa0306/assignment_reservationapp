@@ -2,17 +2,23 @@
   <h2 class="page-title">新規登録</h2>
 
   <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-    <%= render "devise/shared/error_messages", resource: resource %>
-
+    <% if @user.errors.any? %>
+    <% end %>
     <div class="field">
       <%= f.label :name, "ユーザー名", class: "required-field" %><br />
       <%= f.text_field :name, autofocus: true, class: "input-field" %>
     </div>
+    <% if @user.errors.include?(:name) %>
+      <p style="color: red; text-align: center;"><%= @user.errors.full_messages_for(:name).first %>
+    <% end %>
 
     <div class="field">
       <%= f.label :email, "メールアドレス", class: "required-field" %><br />
       <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "input-field" %>
     </div>
+    <% if @user.errors.include?(:email) %>
+      <p style="color: red; text-align: center;"><%= @user.errors.full_messages_for(:email).first %>
+    <% end %>
 
     <div class="field">
       <%= f.label :password, "パスワード", class: "required-field" %>
@@ -21,11 +27,17 @@
       <% end %><br />
       <%= f.password_field :password, autocomplete: "new-password", class: "input-field" %>
     </div>
+    <% if @user.errors.include?(:password) %>
+      <p style="color: red; text-align: center;"><%= @user.errors.full_messages_for(:password).first %>
+    <% end %>
 
     <div class="field">
       <%= f.label :password_confirmation, "確認用パスワード", class: "required-field" %><br />
       <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "input-field" %>
     </div>
+    <% if @user.errors.include?(:password_confirmation) %>
+      <p style="color: red; text-align: center;"><%= @user.errors.full_messages_for(:password_confirmation).first %>
+    <% end %>
 
     <div class="actions">
       <%= f.submit "新しいアカウントを作成", class: "actions-btn" %>

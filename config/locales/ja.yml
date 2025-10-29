@@ -8,9 +8,19 @@ ja:
         password: パスワード
         email: メールアドレス
         phone_number: 電話番号
+      room:
+        name: 施設名
+        detail: 施設詳細
+        price: 料金
+        address: 住所
+      reservation:
+        start_date: チェックイン
+        end_date: チェックアウト
+        num_user: 人数
   time:
     formats:
       full_date: "%Y年%m月%d日 (%a)"
+      default: "%Y/%m/%d"
   views:
     pagination:
       first: "&laquo; 最初"

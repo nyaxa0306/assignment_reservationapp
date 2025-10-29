@@ -1,7 +1,20 @@
 class RoomsController < ApplicationController
   before_action :set_room, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!, except: [:index, :show]
+
   def index
+    @rooms = Room.all
+
+    if params[:address].present?
+      @rooms = @rooms.where("address LIKE ?", "%#{params[:address]}%")
+    end
+    if params[:keyword].present?
+      keyword = "%#{params[:keyword]}%"
+      @rooms = @rooms.where("name LIKE ? OR detail LIKE ?", keyword, keyword)
+    end
+  end
+
+  def myroom
     @rooms = Room.all
   end
 
@@ -23,9 +36,6 @@ class RoomsController < ApplicationController
   def show
   end
 
-  def listing
-  end
-
   def edit
   end
 
@@ -42,6 +52,9 @@ class RoomsController < ApplicationController
   end
 
   def destroy
+    @room.destroy
+    flash[:alert] = "施設を削除しました"
+    redirect_to :myroom
   end
 
   private

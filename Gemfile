@@ -63,3 +63,5 @@ gem 'bootstrap', '~> 5.3.0'
 gem 'jquery-rails'
 
 gem "devise", "~> 4.9"
+
+gem "ransack"

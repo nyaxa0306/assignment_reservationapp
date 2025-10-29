@@ -1,5 +1,4 @@
-<<<<<<< HEAD
-<div class="user-registration-container">
+<div class="dropdown-container">
   <h2>設定</h2>
   <div class="account-container">
     <ul class="account-section">
@@ -47,58 +46,4 @@
       </div>
     </div>
   </div>
-=======
-<div class="container">
-  <h2 class="page-title">ユーザー情報編集</h2>
-
-  <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
-    <%= render "devise/shared/error_messages", resource: resource %>
-
-    <div class="field">
-      <%= f.label :name, "ユーザー名" %><br />
-      <%= f.text_field :name, autofocus: true, class: "input-field" %>
-    </div>
-
-    <div class="field">
-      <%= f.label :introduction, "自己紹介" %><br />
-      <%= f.text_area :introduction, autofocus: true, class: "input-field" %>
-    </div>
-
-    <div class="field">
-      <%= f.label :email, "メールアドレス" %><br />
-      <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "input-field" %>
-    </div>
-
-    <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-      <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
-    <% end %>
-
-    <div class="field">
-      <%= f.label :password, "新しいパスワード" %><br />
-      <%= f.password_field :password, autocomplete: "new-password", class: "input-field" %>
-      <% if @minimum_password_length %>
-        <br />
-        <em><%= @minimum_password_length %>文字以上</em>
-      <% end %>
-    </div>
-
-    <div class="field">
-      <%= f.label :password_confirmation, "新しいパスワード（確認用）" %><br />
-      <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "input-field" %>
-    </div>
-
-    <div class="field">
-      <%= f.label :current_password, "現在のパスワード" %><br />
-      <%= f.password_field :current_password, autocomplete: "current-password", class: "input-field" %>
-    </div>
-
-    <div class="actions">
-      <%= f.submit "保存", class: "actions-btn" %>
-    </div>
-  <% end %>
-
-  <%= link_to :back do %>
-    <button class="another-link">戻る</button>
-  <% end %>
->>>>>>> aa1409a136839aaf28996a5133dbb5d26f4d0549
 </div>

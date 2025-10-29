@@ -1,4 +1,4 @@
-<div class="user-registration-container">
+<div class="dropdown-container">
   <h2>設定</h2>
   <div class="account-container">
     <ul class="account-section">
@@ -10,7 +10,7 @@
         <h2>プロフィール</h2>
       </div>
       <%= form_with model: @user, url: registration_path(@user), html: { method: :put } do |f| %>
-      <%= render "devise/shared/error_messages", resource: @user %>
+      <%= render "devise/shared/error_messages", resource: current_user %>
 
     <div class="field">
       <div class="account-info">

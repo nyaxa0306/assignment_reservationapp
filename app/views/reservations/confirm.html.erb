@@ -1,0 +1,15 @@
+<p>チェックイン日: <%= @reservation.start_date %></p>
+<p>チェックアウト日: <%= @reservation.end_date %></p>
+
+<p>人数: <%= @reservation.num_user %></p>
+<p>合計金額: <%= @reservation.total %></p>
+
+<div>
+  <%= form_with model: @room, url: room_reservations_path, method: :post, local: true do |f| %>
+    <p><%= f.label :start_date, "チェックイン" %></p>
+    <%= f.hidden_field :start_date %>
+    <%= f.hidden_field :end_date %>
+    <%= f.hidden_field :num_user %>
+    <%= f.submit "予約を確定する", class:"confirm-reservation-btn" %>
+  <% end %>
+</div>
