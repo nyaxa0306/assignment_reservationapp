@@ -30,6 +30,7 @@ gem "tzinfo-data", platforms: %i[ windows jruby ]
 
 # Reduces boot times through caching; required in config/boot.rb
 gem "bootsnap", require: false
+gem "rails-i18n"
 
 gem "sassc-rails"
 
@@ -62,3 +63,5 @@ gem 'bootstrap', '~> 5.3.0'
 gem 'jquery-rails'
 
 gem "devise", "~> 4.9"
+
+gem "ransack"

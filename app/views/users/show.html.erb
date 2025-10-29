@@ -1,0 +1,27 @@
+<div class="dropdown-container">
+  <h2>設定</h2>
+  <div class="account-container">
+    <ul class="account-section">
+      <li class="account-link"><%= link_to "アカウント", account_path, style: "text-decoration: none;" %></li>
+      <li class="account-link-active"><%= link_to "プロフィール", user_path(current_user), style: "text-decoration: none;" %></li>
+    </ul>
+    <div class="account-content">
+      <div class="account-header">
+        <h2>プロフィール</h2>
+        <%= link_to "編集", "/profile/edit", class: "account-edit-btn" %>
+      </div>
+      <div class="account-info">
+        <strong class="account-info-item">アイコン画像</strong>
+        <span><%= image_tag avatar_url(current_user), class: "account-avatar" %></span>
+      </div>
+      <div class="account-info">
+        <strong class="account-info-item">ユーザー名</strong>
+        <span><%= current_user.name %></span>
+      </div>
+      <div class="account-info">
+        <strong class="account-info-item">自己紹介</strong>
+        <span><%= current_user.introduction %></span>
+      </div>
+    </div>
+  </div>
+</div>

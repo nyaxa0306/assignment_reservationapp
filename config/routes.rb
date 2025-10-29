@@ -1,9 +1,31 @@
 Rails.application.routes.draw do
   root "pages#home"
+
   get "pages/home"
+  get "/account", to: "users#account"
+  get "/profile", to: "users#show", as: "user"
+  get "/profile/edit", to: "users#edit", as: "edit_user"
+  get "/reservations", to: "reservations#index"
+  get "/reservations/confirm", to: "reservations#confirm"
+  get "myroom", to: "rooms#myroom"
+
+  post "/profile/update", to: "users#update"
+
+  resources :rooms do
+    collection do
+      get "myroom"
+    end
+    resources :reservations do
+      collection do
+        post "confirm"
+      end
+    end
+  end
+
   devise_for :users,
              path: "",
-             path_names: { sign_up: "register", sign_in: "login", edit: "profile", sign_out: "logout" }
+             path_names: { sign_up: "register", sign_in: "login", edit: "edit", sign_out: "logout" },
+             controllers: { registrations: "registrations" }
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
   get "pages/home"
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.

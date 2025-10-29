@@ -1,2 +1,31 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+<section class="first-view">
+  <h1 class="first-view-title">Potepan Shareで<br>まだ体験したことのない<br>旅をしよう</h1>
+  <div class="search-box">
+    <%= form_with url: rooms_path, method: :get, local: true do |f| %>
+      <%= f.text_field :address, value: params[:address], placeholder: "エリア名を入力", include_blank: "すべて", class: "search-box-form" %>
+      <%= f.submit "検索", class: "search-box-btn" %>
+    <% end %>
+  </div>
+</section>
+
+<section class="recommendation">
+  <h2 class="recommendation-title">おすすめエリア<h2>
+  <div class="recommendation-area">
+    <%= link_to "/rooms?address=東京&commit=検索", class: "recommendation-area-item" do %>
+      <span>東京</span>
+      <img class="recommendation-area-image" src="/assets/東京.jpg" alt="東京">
+    <% end %>
+    <%= link_to "/rooms?address=大阪&commit=検索", class: "recommendation-area-item" do %>
+      <span>大阪</span>
+      <img class="recommendation-area-image" src="/assets/大阪.jpg" alt="大阪">
+    <% end %>
+    <%= link_to "/rooms?address=京都&commit=検索", class: "recommendation-area-item" do %>
+      <span>京都</span>
+      <img class="recommendation-area-image" src="/assets/京都.jpg" alt="京都">
+    <% end %>
+    <%= link_to "/rooms?address=札幌&commit=検索", class: "recommendation-area-item" do %>
+      <span>札幌</span>
+      <img class="recommendation-area-image" src="/assets/札幌.jpg" alt="札幌">
+    <% end %>
+  </div>
+</section>

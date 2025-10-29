@@ -1,0 +1,21 @@
+<%= render "rooms/search-bar" %>
+
+<div class="room-index-container>
+  <strong class="rooms-count"><%= @rooms.count %>件が見付かりました</strong>
+  <div class="room-list">
+    <% @rooms.each do |room| %>
+      <div class="room-card">
+        <%= image_tag image_url(room), alt: room.name, class: "room-card-image" %>
+        <div class="room-card-info">
+        <p class="room-name"><%= room.name %></p>
+        <p class="room-address"><%= room.address %></p>
+        <p class="room-detail"><%= truncate(room.detail, length: 100) %></p>
+        <div class="room-card-container">
+          <strong class="room-price">￥<%= room.price %>～</strong>
+          <%= link_to "詳細はこちら", room_path(room), class: "room-show-link" %>
+        </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>

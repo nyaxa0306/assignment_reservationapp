@@ -1,0 +1,22 @@
+<%= render "rooms/search-bar" %>
+
+<div class="room-container">
+  <div class="room-header">
+    <%= link_to "← 戻る", :back, style: "text-decoration: none;" %>
+    <% if @room.user == current_user %>
+      <%= link_to "編集", edit_room_path(@room), style: "text-decoration: none;" %>
+    <% end %>
+  </div>
+  <div class="room-content">
+    <%= image_tag image_url(@room), class: "room-image" %>
+    <div class="room-info">
+      <div class="room-name-price">
+        <p class="room-name"><%= @room.name %></p>
+        <strong class="room-price">￥<%= @room.price %>～</strong>
+      </div>
+      <p class="room-address"><%= @room.address %></p>
+      <p class="room-detail"><%= @room.detail %></p>
+      <%= render 'reservations/form' %>
+    </div>
+  </div>
+</div>
